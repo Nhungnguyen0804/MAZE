@@ -1,0 +1,2 @@
+E:\C++\LAM GAME\NGAM LAI TU DAU\GAME\Debug\GAME.exe.lastcodeanalysissucceeded
+E:\C++\LAM GAME\NGAM LAI TU DAU\GAME\GAME\Debug\NativeCodeAnalysis.read.1.tlog
