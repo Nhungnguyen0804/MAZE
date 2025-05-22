@@ -1,9 +1,9 @@
-#ifndef NORMAL_H
+﻿#ifndef NORMAL_H
 #define NORMAL_H
 #include"Common.h"
 #include"image.h"
 
-using namespace std;
+
 
 
 
@@ -80,8 +80,8 @@ class Game {
 
 	bool checkMenuLv = 0;
 	bool quit_menu = 0;
-	
-	
+
+
 public:
 	Game();
 	~Game();
@@ -95,9 +95,7 @@ public:
 	//int Gameplay();
 	int result(bool res, int checkLv, Uint32 val_time, int checkMap);
 	int check_menu_lv()const { return checkMenuLv; }
-	
+
 
 };
 #endif 
-
-

@@ -60,7 +60,7 @@ typedef struct Map
     int max_y_;
 
     int tile[MAX_MAP_Y][MAX_MAP_X];
-    char* file_name_;
+    const char* file_name_;
 };
 #endif // COMMON_H
 

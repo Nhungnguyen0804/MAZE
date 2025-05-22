@@ -14,7 +14,7 @@ void Show_image(SDL_Renderer* renderer, const char* str_image, SDL_Rect rect)
     image = IMG_Load(str_image);
     if (image == NULL)
     {
-        cerr << "Unable to load image!" << str_image << endl
+        cout << "Unable to load image!" << str_image << endl
             << "SDL Error: " << SDL_GetError();
     }
     else

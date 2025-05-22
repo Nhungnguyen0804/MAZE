@@ -1,56 +1,10 @@
-﻿  Base.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-  Common.cpp
-  Game.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(283,30): warning C4553: '==': result of expression not used; did you intend '='?
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(374,35): warning C4553: '==': result of expression not used; did you intend '='?
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(481,31): warning C4553: '==': result of expression not used; did you intend '='?
-  Game_map.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-  HinhHoc.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\HinhHoc.h(18,2): warning C4091: 'typedef ': ignored on left of 'FormatHinhHoc' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\HinhHoc.h(31,2): warning C4091: 'typedef ': ignored on left of 'ColorData' when no variable is declared
-  image.cpp
-  ImpTimer.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+﻿  Game_map.cpp
+E:\C++ Project\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+E:\C++ Project\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
   main.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\HinhHoc.h(18,2): warning C4091: 'typedef ': ignored on left of 'FormatHinhHoc' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\HinhHoc.h(31,2): warning C4091: 'typedef ': ignored on left of 'ColorData' when no variable is declared
-  MainObject.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(113,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(114,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(228,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(238,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(260,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(261,44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(263,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(264,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(312,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(359,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(368,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(369,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(371,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(372,45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(415,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(464,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\MainObject.cpp(481,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  SDL_mixer_function.cpp
-  TextObj.cpp
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+E:\C++ Project\MAZE\GAME\Common.h(54,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+E:\C++ Project\MAZE\GAME\Common.h(64,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+E:\C++ Project\MAZE\GAME\HinhHoc.h(18,2): warning C4091: 'typedef ': ignored on left of 'FormatHinhHoc' when no variable is declared
+E:\C++ Project\MAZE\GAME\HinhHoc.h(31,2): warning C4091: 'typedef ': ignored on left of 'ColorData' when no variable is declared
   Generating Code...
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(248): warning C4715: 'Game::initMenu': not all control paths return a value
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(349): warning C4715: 'Game::initSelectMap': not all control paths return a value
-E:\C++\LAM GAME\MAZE - visual\MAZE\GAME\Game.cpp(444): warning C4715: 'Game::selectLevel': not all control paths return a value
-  GAME.vcxproj -> E:\C++\LAM GAME\MAZE - visual\MAZE\x64\Debug\GAME.exe
+  GAME.vcxproj -> E:\C++ Project\MAZE\x64\Debug\GAME.exe

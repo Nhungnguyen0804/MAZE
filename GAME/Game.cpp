@@ -1,4 +1,4 @@
-#include"Game.h"
+﻿#include"Game.h"
 #include"Common.h"
 #include<iostream>
 #include "SDL_mixer_function.h"
@@ -69,7 +69,7 @@ SDL_Rect start_rect = { X_NUT_START, Y_NUT_START, W_NUT_START, H_NUT_START };
 
 SDL_Rect huong_dan_rect = { X_NUT_HD , Y_NUT_HD ,  W_NUT_HD, H_NUT_HD };
 SDL_Rect noi_dung_huong_dan_rect = { X_HD , Y_HD ,  W_HD, H_HD };
-SDL_Rect sound_menu_rect = { X_NUT_SOUND_MENU , Y_NUT_SOUND_MENU ,  W_NUT_SOUND_MENU, H_NUT_SOUND_MENU  };
+SDL_Rect sound_menu_rect = { X_NUT_SOUND_MENU , Y_NUT_SOUND_MENU ,  W_NUT_SOUND_MENU, H_NUT_SOUND_MENU };
 SDL_Rect menu_quit_rect = { X_NUT_QUIT , Y_NUT_QUIT ,  W_NUT_QUIT, H_NUT_QUIT };
 
 
@@ -97,35 +97,35 @@ void Button::render() {
 }
 
 int Game::initMenu() {
-  
-   
-    
- //show anh mh, = background.png ,SDL_Rect back_rect = { 0, 0, 900, 600 };
+
+
+
+    //show anh mh, = background.png ,SDL_Rect back_rect = { 0, 0, 900, 600 };
     Show_image(renderer, menu_start_image, background_rect);
-   
- //show anh , mh,= play , rect  ,SDL_Rect play_rect = { 700, 500, 150, 80 };
+
+    //show anh , mh,= play , rect  ,SDL_Rect play_rect = { 700, 500, 150, 80 };
     Show_image(renderer, start_button_up, start_rect);
- // show sound o menu 1
-     Show_image(renderer, menu_sound_up , sound_menu_rect);
- //show bieu tuong sound o menu
-    Show_image(renderer, huong_dan_up , huong_dan_rect);
-//Show QUIT menu
+    // show sound o menu 1
+    Show_image(renderer, menu_sound_up, sound_menu_rect);
+    //show bieu tuong sound o menu
+    Show_image(renderer, huong_dan_up, huong_dan_rect);
+    //Show QUIT menu
     Show_image(renderer, menu_quit_up, menu_quit_rect);
- // nhac nen
-    
+    // nhac nen
 
-    
-  
 
-    // t tu 
+
+
+
+       // t tu 
     bool quit = false;
     bool checkHD = 0;
     bool checkSound = 0;
     while (!quit) {
         if (SDL_PollEvent(&e))
         {
-            
-            if(e.type == SDL_MOUSEBUTTONDOWN)
+            if (e.type == SDL_QUIT) exit(0); // nhấn nút x => out game 
+            if (e.type == SDL_MOUSEBUTTONDOWN)
             {
                 if (e.button.button == SDL_BUTTON_LEFT)
                 { // bam chuot trai
@@ -133,19 +133,19 @@ int Game::initMenu() {
 
                     SDL_Rect start_rect = { X_NUT_START, Y_NUT_START, W_NUT_START, H_NUT_START };
                     //chuot<=  x+w , chuot >= x , chuot <= y+h , chuot >= y 
-                    bool startBut = (e.button.x <= X_NUT_START + W_NUT_START) && (e.button.x >= X_NUT_START) && (e.button.y <= Y_NUT_START+H_NUT_START) && (e.button.y >= Y_NUT_START);
+                    bool startBut = (e.button.x <= X_NUT_START + W_NUT_START) && (e.button.x >= X_NUT_START) && (e.button.y <= Y_NUT_START + H_NUT_START) && (e.button.y >= Y_NUT_START);
                     // neu bam nut play cua menu start :
                     if (startBut)
                     {
-                        Show_image(renderer, start_button_down, start_rect); 
-       
+                        Show_image(renderer, start_button_down, start_rect);
+
                         SDL_Delay(50);
                         quit = true;
                         break;
-                       
-                        
+
+
                     }
-                    
+
                     SDL_Rect quit_menu_rect = { X_NUT_QUIT, Y_NUT_QUIT, W_NUT_QUIT, H_NUT_QUIT };
                     //chuot bam<=  x+w , chuot bam >= x , chuot bam <= y+h , chuot bam >= y 
                     bool quitBut = (e.button.x <= X_NUT_QUIT + W_NUT_QUIT) && (e.button.x >= X_NUT_QUIT) && (e.button.y <= Y_NUT_QUIT + H_NUT_QUIT) && (e.button.y >= Y_NUT_QUIT);
@@ -154,16 +154,16 @@ int Game::initMenu() {
                     {
                         Show_image(renderer, menu_quit_down, menu_quit_rect);
                         SDL_Delay(50);
-                        return 1;
+                        return -1;
                     }
                     // bam bieu tuong sound ->tat am
                     // bam ngoai sound ->bat am
                     SDL_Rect sound_menu_rect = { X_NUT_SOUND_MENU , Y_NUT_SOUND_MENU ,  W_NUT_SOUND_MENU, H_NUT_SOUND_MENU };
-                    bool soundBut  = (e.button.x <= X_NUT_SOUND_MENU + W_NUT_SOUND_MENU) && (e.button.x >= X_NUT_SOUND_MENU) && (e.button.y <= Y_NUT_SOUND_MENU + H_NUT_SOUND_MENU) && (e.button.y >= Y_NUT_SOUND_MENU);
+                    bool soundBut = (e.button.x <= X_NUT_SOUND_MENU + W_NUT_SOUND_MENU) && (e.button.x >= X_NUT_SOUND_MENU) && (e.button.y <= Y_NUT_SOUND_MENU + H_NUT_SOUND_MENU) && (e.button.y >= Y_NUT_SOUND_MENU);
                     if (soundBut)// neu bam
                     {
 
-                       
+
                         Show_image(renderer, menu_sound_down, sound_menu_rect);
                         Mix_PauseMusic(); // bam vao thi tam dung nhac
                         Mix_Pause(-1);
@@ -177,11 +177,11 @@ int Game::initMenu() {
                         Show_image(renderer, menu_sound_up, sound_menu_rect);
                         Mix_ResumeMusic();
                         Mix_Resume(-1);
-                       
+
 
                     }
-                    
-                    
+
+
                     SDL_Rect huong_dan_rect = { X_NUT_HD , Y_NUT_HD ,  W_NUT_HD, H_NUT_HD };
                     bool huongDanBut = (e.button.x <= X_NUT_HD + W_NUT_HD) && (e.button.x >= X_NUT_HD) && (e.button.y <= Y_NUT_HD + H_NUT_HD) && (e.button.y >= Y_NUT_HD);
                     // neu bam nut play cua menu start :
@@ -195,12 +195,12 @@ int Game::initMenu() {
 
                     }
                     else { checkHD = 0; }
-                    
-                  
-                    
-                    
+
+
+
+
                 }
-                
+
             }
             else if (e.type == SDL_MOUSEBUTTONUP)
             {
@@ -226,7 +226,7 @@ int Game::initMenu() {
                     {
                         Show_image(renderer, menu_sound_down, sound_menu_rect);
                     }
-                   if( checkSound==0)
+                    if (checkSound == 0)
                     {
                         Show_image(renderer, menu_sound_up, sound_menu_rect);
                     }
@@ -234,36 +234,36 @@ int Game::initMenu() {
                     Show_image(renderer, huong_dan_up, huong_dan_rect);
                     // nhac nen
                 }
-                
+
 
             }
-            
-            
-            
-        
+
+
+
+
         }
-    
-        
+
+
     }
 }
 Game::Game()
 {
-    
-   
-    
+
+
+
 }
-Game::~Game(){}
+Game::~Game() {}
 
 int Game::initSelectMap()
 {
-  
+
     for (int i = 0; i < 3; i++) {
-        select_map[i].Button_rect = { 37, 53 + i * (120+50), 210, 120};
-        select_map[i].renderer = renderer; 
-        
+        select_map[i].Button_rect = { 37, 53 + i * (120 + 50), 210, 120 };
+        select_map[i].renderer = renderer;
+
     }
     for (int i = 3; i < 6; i++) {
-        select_map[i].Button_rect = { 876, 53 + (i-3) * (120 + 50), 210, 120 };
+        select_map[i].Button_rect = { 876, 53 + (i - 3) * (120 + 50), 210, 120 };
         select_map[i].renderer = renderer;
 
     }
@@ -280,15 +280,16 @@ int Game::initSelectMap()
     }
     Show_image(renderer, nen_select_map, background_rect);
     for (int i = 0; i < 6; i++) {
-        select_map[i].status == Button_Status::Up;
+        select_map[i].status = Button_Status::Up;
         select_map[i].render();
 
     }
     SDL_RenderPresent(renderer);
     while (!quit) {
         if (SDL_PollEvent(&e) == 0) continue;
+        if (e.type == SDL_QUIT) exit(0); // nhấn nút x => out game 
         if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
-           
+
             for (int i = 0; i < 6; i++)
             {
                 if (e.button.x <= select_map[i].Button_rect.x + select_map[i].Button_rect.w
@@ -305,33 +306,33 @@ int Game::initSelectMap()
                     SDL_RenderPresent(renderer);
                     SDL_Delay(50);
                     switch (i) {
-                    case 0:// EASY
+                    case 0:
                         return 30;
                         quit = true;
                         break;
-                    case 1://MEDIUM
+                    case 1:
                         return 31;
                         quit = true;
                         break;
-                    case 2: // HARD
+                    case 2: 
                         return 32;
                         quit = true;
                         break;
-                    case 3: // VERY HARD
+                    case 3:
                         return 33;
                         quit = true;
                         break;
-                    case 4: // VERY HARD
+                    case 4: 
                         return 34;
                         quit = true;
                         break;
-                    case 5: // VERY HARD
+                    case 5: 
                         return 35;
                         quit = true;
                         break;
                     }
 
-                    
+
                     select_map[i].status = Button_Status::Up;
                     SDL_Delay(50);
                     break;
@@ -369,77 +370,78 @@ int Game::selectLevel() {
     {
         game_button[i].status = Button_Status::Up;
     }
-    Show_image(renderer, menu_level , background_rect);
-        for (int i = 0; i < 5; i++) {
-            game_button[i].status == Button_Status::Up;
-            game_button[i].render();
-            
-        }
-        //LoadFont("Select Level", renderer, Title_rect);
-        SDL_RenderPresent(renderer);
-        while (!quit) {
-            if (SDL_PollEvent(&e) == 0) continue;
-            if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
-                  if (!Mix_Paused(-1))Mix_PlayChannel(-1, reverse_sound, 0);
-                for (int i = 0; i < 5; i++) 
-                {
-                    if (e.button.x <= game_button[i].Button_rect.x + game_button[i].Button_rect.w
-                        && e.button.x >= game_button[i].Button_rect.x
-                        && e.button.y <= game_button[i].Button_rect.y + game_button[i].Button_rect.h
-                        && e.button.y >= game_button[i].Button_rect.y) {
-                        if (game_button[i].status == Button_Status::Up)
-                        {
-                            game_button[i].status = Button_Status::Down;
-                        }
-                        else  game_button[i].status = Button_Status::Up;
+    Show_image(renderer, menu_level, background_rect);
+    for (int i = 0; i < 5; i++) {
+        game_button[i].status == Button_Status::Up;
+        game_button[i].render();
 
-                        game_button[i].render();
-                        SDL_RenderPresent(renderer);
-                        SDL_Delay(50);
-                        switch (i) {
-                        case 0:// EASY
-                            return 20;
-                            quit = true;
-                            break;
-                        case 1://MEDIUM
-                            return 21;
-                            quit = true;
-                            break;
-                        case 2: // HARD
-                            return 22;
-                            quit = true;
-                            break;
-                        case 3: // VERY HARD
-                            return 23;
-                            quit = true;
-                            break;
-                        }
-                   
-                        if (i == 4) {
-                            // k bam vao bieu tuong nen no up
-                            if (game_button[i].status == Button_Status::Up) {
-                                Mix_ResumeMusic();
-                                Mix_Resume(-1);
-                            }
-                            else {
-                                Mix_PauseMusic(); // bam vao thi tam dung nhac
-                                Mix_Pause(-1);
-                            }
-                        }
-                        else game_button[i].status = Button_Status::Up;
-                        SDL_Delay(50);
+    }
+    //LoadFont("Select Level", renderer, Title_rect);
+    SDL_RenderPresent(renderer);
+    while (!quit) {
+        if (SDL_PollEvent(&e) == 0) continue;
+        if (e.type == SDL_QUIT) exit(0); // nhấn nút x => out game 
+        if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
+            if (!Mix_Paused(-1))Mix_PlayChannel(-1, reverse_sound, 0);
+            for (int i = 0; i < 5; i++)
+            {
+                if (e.button.x <= game_button[i].Button_rect.x + game_button[i].Button_rect.w
+                    && e.button.x >= game_button[i].Button_rect.x
+                    && e.button.y <= game_button[i].Button_rect.y + game_button[i].Button_rect.h
+                    && e.button.y >= game_button[i].Button_rect.y) {
+                    if (game_button[i].status == Button_Status::Up)
+                    {
+                        game_button[i].status = Button_Status::Down;
+                    }
+                    else  game_button[i].status = Button_Status::Up;
+
+                    game_button[i].render();
+                    SDL_RenderPresent(renderer);
+                    SDL_Delay(50);
+                    switch (i) {
+                    case 0:// EASY
+                        return 20;
+                        quit = true;
+                        break;
+                    case 1://MEDIUM
+                        return 21;
+                        quit = true;
+                        break;
+                    case 2: // HARD
+                        return 22;
+                        quit = true;
+                        break;
+                    case 3: // VERY HARD
+                        return 23;
+                        quit = true;
                         break;
                     }
+
+                    if (i == 4) {
+                        // k bam vao bieu tuong nen no up
+                        if (game_button[i].status == Button_Status::Up) {
+                            Mix_ResumeMusic();
+                            Mix_Resume(-1);
+                        }
+                        else {
+                            Mix_PauseMusic(); // bam vao thi tam dung nhac
+                            Mix_Pause(-1);
+                        }
+                    }
+                    else game_button[i].status = Button_Status::Up;
+                    SDL_Delay(50);
+                    break;
                 }
             }
-            else if (e.type == SDL_MOUSEBUTTONUP)
-            {
-                for (int i = 0; i < 4; i++)
-                game_button[i].status = Button_Status::Up;
-            }
         }
-        for (int i = 0; i < 4; i++)
-            game_button[i].status = Button_Status::Up;
+        else if (e.type == SDL_MOUSEBUTTONUP)
+        {
+            for (int i = 0; i < 4; i++)
+                game_button[i].status = Button_Status::Up;
+        }
+    }
+    for (int i = 0; i < 4; i++)
+        game_button[i].status = Button_Status::Up;
 
 }
 
@@ -480,20 +482,20 @@ int Game::result(bool res, int checkLV, Uint32 val_time, int checkMap)
     for (int i = 0; i < 3; i++) {
         game_button[i].status == Button_Status::Up;
         game_button[i].render(); // hien thi nut chon
-        
+
     }
-   
+
     game_button[4].render();// bieu tuong am thanh
 
-    
-    
-    std::string ten_nhan = "Score:";
-    std::string so_diem = std::to_string(val_time);
+
+
+    string ten_nhan = "Score:";
+    string so_diem = to_string(val_time);
     ten_nhan += so_diem;
     hien_diem.SetText(ten_nhan);
     hien_diem.LoadFromRenderText(font_score, renderer);
     hien_diem.RenderText(renderer, 402, 173, NULL, NULL, NULL, SDL_FLIP_NONE);
-    
+
     // update mh
 
     SDL_RenderPresent(renderer);
@@ -501,6 +503,7 @@ int Game::result(bool res, int checkLV, Uint32 val_time, int checkMap)
 
     while (true) {
         if (SDL_PollEvent(&e) == 0) continue;
+        if (e.type == SDL_QUIT) exit(0); // nhấn nút x => out game 
         if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
             //   if (!Mix_Paused(-1)) Mix_PlayChannel(-1, reverse_sound, 0);
             for (int i = 0; i < 5; i++) {
@@ -518,12 +521,12 @@ int Game::result(bool res, int checkLV, Uint32 val_time, int checkMap)
 
 
                     if (i == 4) {
-                        if (game_button[i].status == Button_Status::Up) 
+                        if (game_button[i].status == Button_Status::Up)
                         {
                             Mix_ResumeMusic();
                             Mix_Resume(-1);
                         }
-                        else 
+                        else
                         {
                             Mix_PauseMusic(); // bam vao thi tam dung nhac
                             Mix_Pause(-1);
@@ -537,14 +540,12 @@ int Game::result(bool res, int checkLV, Uint32 val_time, int checkMap)
                 }
             }
         }
-        else if(e.type == SDL_MOUSEBUTTONUP)
+        else if (e.type == SDL_MOUSEBUTTONUP)
         {
             for (int i = 0; i < 4; i++)
-            game_button[i].status = Button_Status::Up;
+                game_button[i].status = Button_Status::Up;
         }
     }
     for (int i = 0; i < 4; i++)
         game_button[i].status = Button_Status::Up;
 }
-
-

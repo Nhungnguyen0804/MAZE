@@ -12,6 +12,9 @@
 #include"image.h"
 #include"Game.h"
 
+#include<iostream>
+using namespace std;
+
 Base g_background;
 
 TTF_Font* font_time = NULL;
@@ -24,7 +27,7 @@ bool InitData()
 {
     bool suc = 1;
     int ret = SDL_Init(SDL_INIT_VIDEO);
-    if (ret < 0) { printf("rec init <0"); return 0; }
+    if (ret < 0) { cout <<"rec init <0" << endl; return 0; }
     else
     {
 
@@ -38,12 +41,13 @@ bool InitData()
             SDL_WINDOW_SHOWN
         );
 
-        if (gWin == NULL) { printf("gWin null"); return 0; }
+        if (gWin == NULL) { cout << "gWin null" << endl; return 0; }
         else
         {
             gRen = SDL_CreateRenderer(gWin, -1, SDL_RENDERER_ACCELERATED);
             if (gRen == NULL)
             {
+                cout << "gRen null" << endl;
                 return 0;
             }
             else
@@ -67,8 +71,7 @@ bool InitData()
 
             if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
             {
-                printf("k the init mix");
-                suc = 0;
+                    cout <<"k the init mix" << endl;suc = 0;
             }
 
             gNen = Mix_LoadMUS("audio//nen_dora.mp3");
@@ -77,7 +80,7 @@ bool InitData()
             g_chuong = Mix_LoadWAV("audio//chuong.wav");
             if (gNen == NULL or g_eat == NULL or g_dora == NULL or g_chuong == NULL)
             {
-                printf("k co file nhac ");
+                cout << "k co file nhac" << endl;
                 return 0;
                 
             }
@@ -115,7 +118,7 @@ int main(int argc, char* argv[])
     if (LoadBackground() == 0) { printf("load background = 0 "); return -1; }
 
    
-
+    cout << "main ok";
    
 
 
@@ -184,25 +187,25 @@ int main(int argc, char* argv[])
                     int checkLV = GameH.selectLevel();
                     if (checkLV == 20)
                     {
-                        char gm[] = "map/map01.dat";
+                        char gm[] = "image/map/map01.dat";
                         game_map.LoadMap(gm);
                         game_map.LoadTiles(gRen, checkMap);
                     }
                     else if (checkLV == 21)
                     {
-                        char gm[] = "map/map02.dat";
+                        char gm[] = "image/map/map02.dat";
                         game_map.LoadMap(gm);
                         game_map.LoadTiles(gRen, checkMap);
                     }
                     else if (checkLV == 22)
                     {
-                        char gm[] = "map/map03.dat";
+                        char gm[] = "image/map/map03.dat";
                         game_map.LoadMap(gm);
                         game_map.LoadTiles(gRen, checkMap);
                     }
                     else
                     {
-                        char gm[] = "map/map04.dat";
+                        char gm[] = "image/map/map04.dat";
                         game_map.LoadMap(gm);
                         game_map.LoadTiles(gRen, checkMap);
                     }

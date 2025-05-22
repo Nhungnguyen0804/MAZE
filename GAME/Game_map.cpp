@@ -1,175 +1,87 @@
-#include"Game_map.h"
+#include "Game_map.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
-void GameMap::LoadMap( char* name)
+using namespace std;
+void GameMap::LoadMap(const char* name)
 {
-    FILE* fp = NULL;
-    fopen_s(&fp, name, "rb");
-    if (fp == NULL)
+    ifstream file(name);
+    if (!file.is_open())
     {
-        printf(" file fp null / game map cpp / load map "); return;
+        cout << "Failed to open map file: " << name << endl;
+        return;
     }
 
     game_map_.max_x_ = 0;
     game_map_.max_y_ = 0;
 
-    for (int i = 0; i < MAX_MAP_Y; i++)
+    for (int i = 0; i < MAX_MAP_Y; ++i)
     {
-        for (int j = 0; j < MAX_MAP_X; j++)
+        for (int j = 0; j < MAX_MAP_X; ++j)
         {
-            fscanf_s(fp, "%d", &game_map_.tile[i][j]);
-
+            file >> game_map_.tile[i][j];
             int val = game_map_.tile[i][j];
             if (val > 0)
             {
-                if (j > game_map_.max_x_)
-                {
-                    game_map_.max_x_ = j;
-                }
-
-                if (i > game_map_.max_y_)
-                {
-                    game_map_.max_y_ = i;
-                }
+                game_map_.max_x_ = (max)(game_map_.max_x_, j);
+                game_map_.max_y_ = (max)(game_map_.max_y_, i);
             }
         }
     }
 
-
     game_map_.max_x_ = (game_map_.max_x_ + 1) * TILE_SIZE;
     game_map_.max_y_ = (game_map_.max_y_ + 1) * TILE_SIZE;
-
     game_map_.start_x_ = 0;
     game_map_.start_y_ = 0;
-
     game_map_.file_name_ = name;
-    fclose(fp);
 }
 
 void GameMap::LoadTiles(SDL_Renderer* screen, int checkMap)
 {
-    char file_img[30];
-    FILE* fp = NULL;
-    if (checkMap == 30)
+    string folder;
+    switch (checkMap)
     {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
-
-            sprintf_s(file_img, "map1/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
+    case 30: folder = "image/map1/"; break;
+    case 31: folder = "image/map2/"; break;
+    case 32: folder = "image/map3/"; break;
+    case 33: folder = "image/map4/"; break;
+    case 34: folder = "image/map5/"; break;
+    default: folder = "image/map6/"; break;
     }
-    else if (checkMap == 31)
+
+    for (int i = 0; i < MAX_TILES; ++i)
     {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
+        string filename = folder + to_string(i) + ".png";
+        ifstream fcheck(filename);
+        if (!fcheck.is_open()) continue;
 
-            sprintf_s(file_img, "map2/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
-    }
-    else if (checkMap == 32)
-    {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
-
-            sprintf_s(file_img, "map3/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
-    }
-    else if (checkMap == 33)
-    {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
-
-            sprintf_s(file_img, "map4/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
-    }
-    else if (checkMap == 34)
-    {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
-
-            sprintf_s(file_img, "map5/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
-    }
-    else 
-    {
-        for (int i = 0; i < MAX_TILES; i++)
-        {
-
-            sprintf_s(file_img, "map6/%d.png", i);
-
-            fopen_s(&fp, file_img, "rb");
-
-            if (fp == NULL) { continue; }
-
-            fclose(fp);
-            tile_mat[i].LoadImg(file_img, screen);
-        }
+        tile_mat[i].LoadImg(filename.c_str(), screen);
     }
 }
 
 void GameMap::DrawMap(SDL_Renderer* screen)
 {
-    int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    int map_x = game_map_.start_x_ / TILE_SIZE;
+    int map_y = game_map_.start_y_ / TILE_SIZE;
 
-    int map_x = 0, map_y = 0;
+    int x1 = (game_map_.start_x_ % TILE_SIZE) * -1;
+    int y1 = (game_map_.start_y_ % TILE_SIZE) * -1;
 
-    map_x = game_map_.start_x_ / TILE_SIZE;
-    x1 = (game_map_.start_x_ % TILE_SIZE) * -1;
-    x2 = x1 + SCR_W + (x1 == 0 ? 0 : TILE_SIZE);
+    int x2 = x1 + SCR_W + (x1 == 0 ? 0 : TILE_SIZE);
+    int y2 = y1 + SCR_H + (y1 == 0 ? 0 : TILE_SIZE);
 
-    map_y = game_map_.start_y_ / TILE_SIZE;
-    y1 = (game_map_.start_y_ % TILE_SIZE) * -1;
-    y2 = y1 + SCR_H + (y1 == 0 ? 0 : TILE_SIZE);
-
-    for (int i = y1; i < y2; i += TILE_SIZE)
+    for (int y = y1, i = map_y; y < y2 && i < MAX_MAP_Y; y += TILE_SIZE, ++i)
     {
-        map_x = game_map_.start_x_ / TILE_SIZE;
-        for (int j = x1; j < x2; j += TILE_SIZE)
+        for (int x = x1, j = map_x; x < x2 && j < MAX_MAP_X; x += TILE_SIZE, ++j)
         {
-            int val = game_map_.tile[map_y][map_x];
-            if (val > 0)
+            int val = game_map_.tile[i][j];
+            if (val > 0 && val < MAX_TILES)
             {
-                tile_mat[val].SetRect(j, i);
-                tile_mat[val].Render(screen, NULL);
+                tile_mat[val].SetRect(x, y);
+                tile_mat[val].Render(screen, nullptr);
             }
-            map_x++;
         }
-        map_y++;
     }
 }
-
-
